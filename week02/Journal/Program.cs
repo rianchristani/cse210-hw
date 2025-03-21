@@ -3,31 +3,41 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        Console.WriteLine("Hello World! This is the Journal Project.");
+    { 
 
-        write write1 = new write();
-        write1._sentence = "Who had the most meaningful conversation with me today and why?";
+        Entry prompt1 = new Entry();
+        prompt1._date = DateTime.Now.ToString("yyyy-MM-dd");
+        prompt1._promptText = "Who had the most meaningful conversation with me today and why?";
+        prompt1._entryText = Console.ReadLine();
 
-        write write2 = new write();
-        write2._sentence = "What small things brought me joy today?";
+        Entry prompt2 = new Entry();
+        prompt2._date = DateTime.Now.ToString("yyyy-MM-dd");
+        prompt2._promptText = "What small things brought me joy today?";
+        prompt2._entryText = Console.ReadLine();
 
-        write write3 = new write();
-        write3._sentence = "What challenge taught me something valuable about myself?";
+        Entry prompt3 = new Entry();
+        prompt3._date = DateTime.Now.ToString("yyyy-MM-dd");
+        prompt3._promptText = "What challenge taught me something valuable about myself?";
+        prompt3._entryText = Console.ReadLine();
 
-        write write4 = new write();
-        write4._sentence = "Where did I feel my actions were most aligned with my values?";
+        Entry prompt4 = new Entry();
+        prompt4._date = DateTime.Now.ToString("yyyy-MM-dd");
+        prompt4._promptText = "Where did I feel my actions were most aligned with my values?";
+        prompt4._entryText = Console.ReadLine();
 
-        write write5 = new write();
-        write5._sentence = "How can I use today's lessons to grow tomorrow?";
+        Entry prompt5 = new Entry();
+        prompt5._date = DateTime.Now.ToString("yyyy-MM-dd");
+        prompt5._promptText = "How can I use today's lessons to grow tomorrow?";
+        prompt5._entryText = Console.ReadLine();
 
-        display display = new display();
-        display._sentences.Add(write1);
-        display._sentences.Add(write2);
-        display._sentences.Add(write3);
-        display._sentences.Add(write4);
-        display._sentences.Add(write5);
+       Journal journal = new Journal();
+       journal.AddEntry(prompt1);
+       journal.AddEntry(prompt2);
+       journal.AddEntry(prompt3);
+       journal.AddEntry(prompt4);
+       journal.AddEntry(prompt5);
 
-        display.Display();
+       journal.DisplayAll();
+
     }
 }
