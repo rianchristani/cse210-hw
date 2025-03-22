@@ -12,7 +12,7 @@ public class Journal{
     }
 
     public void SaveToFile(string filename){
-        using (StreamWriter outputFile = new StreamWriter (filename, true))
+        using (StreamWriter outputFile = new StreamWriter ($"{filename}.csv", true))
             {
                 foreach (Entry line in _entries){
                     outputFile.WriteLine($"{line._date},{line._promptText},{line._entryText}");
@@ -21,7 +21,7 @@ public class Journal{
     }
 
     public void LoadFromFile(string filename){
-            string [] lines = System.IO.File.ReadAllLines (filename);
+            string [] lines = System.IO.File.ReadAllLines ($"{filename}.csv");
             _entries.Clear();
 
             foreach (string line in lines)
