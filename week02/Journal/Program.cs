@@ -1,43 +1,44 @@
 using System;
+using System.IO;
 
 class Program
 {
     static void Main(string[] args)
     { 
+        Console.WriteLine("Please select one of the following choices:");
+        int choice = 1;
 
-        Entry prompt1 = new Entry();
-        prompt1._date = DateTime.Now.ToString("yyyy-MM-dd");
-        prompt1._promptText = "Who had the most meaningful conversation with me today and why?";
-        prompt1._entryText = Console.ReadLine();
+        Journal journal = new Journal();
 
-        Entry prompt2 = new Entry();
-        prompt2._date = DateTime.Now.ToString("yyyy-MM-dd");
-        prompt2._promptText = "What small things brought me joy today?";
-        prompt2._entryText = Console.ReadLine();
+        while (choice != 5){
+            Console.WriteLine("1. Write\n2. Display\n3. Load\n4. Save\n5. Quit\nWhat would you like to do?");
+            choice = int.Parse(Console.ReadLine());
+            if (choice == 1){
+                Entry entry = new Entry();
+                Console.WriteLine(entry._promptText);
+                entry._entryText = Console.ReadLine();
+                journal.AddEntry(entry);
+            }
 
-        Entry prompt3 = new Entry();
-        prompt3._date = DateTime.Now.ToString("yyyy-MM-dd");
-        prompt3._promptText = "What challenge taught me something valuable about myself?";
-        prompt3._entryText = Console.ReadLine();
+            else if (choice == 2){
+                journal.DisplayAll();
+            }
 
-        Entry prompt4 = new Entry();
-        prompt4._date = DateTime.Now.ToString("yyyy-MM-dd");
-        prompt4._promptText = "Where did I feel my actions were most aligned with my values?";
-        prompt4._entryText = Console.ReadLine();
+            else if (choice == 3){
+                Console.WriteLine("What is the filename? ");
 
-        Entry prompt5 = new Entry();
-        prompt5._date = DateTime.Now.ToString("yyyy-MM-dd");
-        prompt5._promptText = "How can I use today's lessons to grow tomorrow?";
-        prompt5._entryText = Console.ReadLine();
+                journal.LoadFromFile(Console.ReadLine());
+            }
 
-       Journal journal = new Journal();
-       journal.AddEntry(prompt1);
-       journal.AddEntry(prompt2);
-       journal.AddEntry(prompt3);
-       journal.AddEntry(prompt4);
-       journal.AddEntry(prompt5);
+            else if (choice == 4){
+                Console.WriteLine("What is the filename? "); 
 
-       journal.DisplayAll();
+                journal.SaveToFile(Console.ReadLine());
+            }
 
+            else{
+                Console.WriteLine("PUT A VALID BRO!");
+            }
+        }
     }
 }
