@@ -14,14 +14,18 @@ public class Scripture{
 
     public void HideRandomWords(int numberToHide){
         Random random = new Random();
+        int counter = 0;
 
-        for (int i = 0; i < numberToHide && i < _words.Count; i++){
-            _words[i].Hide();
+        while (counter != numberToHide){
+            int irandom = random.Next(_words.Count);
+            if (_words[irandom].isHidden() == false){
+            _words[irandom].Hide();
+            counter++;
+            }
         }
     }
 
     public void GetDisplayText(){
-        _words.Clear();
 
         string displayText = "";
 
