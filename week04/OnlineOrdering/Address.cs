@@ -20,7 +20,7 @@ public class Address{
         }
     }
 
-    public string DisplayAdress(){
+    public string DisplayAddress(){
         return $"\nStreet: {_street}\nCity/State:{_city}/{_state}\nCountry: {_country}\n";
     }
 }

@@ -14,7 +14,7 @@ public class Customer{
         }
     }
 
-    public string getName(){
+    public string GetName(){
         return _name;
     }
 }
